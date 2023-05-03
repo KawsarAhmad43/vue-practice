@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <div class="container">
+    <center>
+            <div class="card mt-5 mb-2  p-3" style="width: 80%;">         
+                <form action="">
+                  <h5 class="text-center">{{ name }}</h5>
+                      <div class="form-group">
+                        <label for="var1">Date of Birth</label>
+                        <input type="date" class="form-control" id="var1" name="var1" v-model="var1">
+                      </div>  
+                    <button class="btn btn-success" @click.prevent="calculateAge">Calculate</button>                       
+                </form>
+                <div class="form-group">
+                    <label for="var2">Age:</label>
+                    <input type="text" class="form-control" id="age" name="age" v-model="age" readonly>
+                  </div> 
+    
+            </div>
+   </center>
+        </div>
+    </div>
+ <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+ <script>
+    const { createApp } = Vue 
+    createApp({
+      data() {
+        return {
+          name: "Age Calculator",
+          var1: '',
+          age: '',         
+        }
+      },
+      methods: {
+               
+                calculateAge() {                   
+                    const dateob = this.var1;
+                                     
+                    let currentDate = new Date();
+                    let cday = currentDate.getDate();
+                    let cmonth = currentDate.getMonth();
+                    let cyear = currentDate.getYear();                   
+
+                    let birthDate = new Date(dateob);
+                    let dday = birthDate.getDate();
+                    let dmonth = birthDate.getMonth();
+                    let dyear = birthDate.getYear();
+                  
+                    let dify = cyear-dyear;                   
+                    let difference = currentDate - birthDate;
+                    let age = Math.floor(difference/31557600000);
+                    // return age
+                    // if (cmonth<dmonth && cday<dday){
+
+                    // }
+                    // elseif(cmonth>dmonth && cday<dday){
+
+                    // }
+                    console.log(dify, (cmonth - dmonth));                                                       
+                },
+            },
+    }).mount('#app')
+  </script>
+</body>
+</html>

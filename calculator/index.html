@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <div id="app">
+    <div class="container">
+<center>
+        <div class="card mt-5 mb-2  p-3" style="width: 50%;">         
+            <form action="">
+              <h5 class="text-center">{{ name }}</h5>
+             <div class="form-group">
+                    <label for="var1">Var 1:</label>
+                    <input type="text" class="form-control" id="var1" name="var1" v-model="var1">
+                  </div>
+        
+                  <div class="form-group">
+                    <label for="var2">Var 2:</label>
+                    <input type="text" class="form-control" id="var2" name="var2" v-model="var2">
+                  </div>       
+                <button class="btn btn-success" @click.prevent="add">+</button>
+                <button class="btn btn-danger ml-3" @click.prevent="sub">-</button>
+                <button class="btn btn-warning ml-3" @click.prevent="mul">*</button>
+                <button class="btn btn-info ml-3" @click.prevent="div">/</button>
+                     
+            </form>
+            <div class="form-group">
+                <label for="var2">Output:</label>
+                <input type="text" class="form-control" id="var3" name="var3" v-model="var3">
+              </div>
+
+        </div>
+      </center>
+    </div>
+</div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+  <script src="index.js"></script>
+  <script>
+    const { createApp } = Vue
+  
+    createApp({
+      data() {
+        return {
+          name: "Calculator",
+          var1: '',
+          var2: '',
+          var3: '',
+
+          
+        }
+      },
+      methods: {
+                add() {
+                    const result = Number(this.var1) + Number(this.var2);
+                    this.var3 = result.toString();
+                },
+                sub() {
+                    const result = Number(this.var1) - Number(this.var2);
+                    this.var3 = result.toString();
+                },
+                mul() {
+                    const result = Number(this.var1) * Number(this.var2);
+                    this.var3 = result.toString();
+                },
+                div() {
+                    const result = Number(this.var1) / Number(this.var2);
+                    this.var3 = result.toString();
+                },
+
+            },
+
+    }).mount('#app')
+  </script>
+</body>
+</html>
